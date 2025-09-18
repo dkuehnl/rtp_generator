@@ -22,6 +22,8 @@ public:
 private slots:
     void on_btnRegister_clicked();
     void on_registration_state_changed(int sip_code, const QString& text);
+    void display_sip_message(const QString& message);
+
 
 private:
     Ui::MainWindow *ui;

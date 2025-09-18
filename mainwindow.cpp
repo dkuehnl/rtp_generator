@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->btnRegister, &QPushButton::clicked, this, &MainWindow::on_btnRegister_clicked);
     connect(m_sip, &SipMachine::registration_state_changed, this, &MainWindow::on_registration_state_changed);
+    connect(m_sip, &SipMachine::new_sip_message, this, &MainWindow::display_sip_message, Qt::QueuedConnection);
 }
 
 MainWindow::~MainWindow()
@@ -19,18 +20,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnRegister_clicked() {
     QString user = ui->leUser->text();
-    QString domain = ui->leDomain->text();
+    QString proxy_ip = ui->leProxyIp->text();
     QString password = ui->lePassword->text();
 
-    m_sip->create_account(user, domain, password, true);
+    m_sip->create_account(user, proxy_ip, password, ui->lblFlow);
 }
 
 void MainWindow::on_registration_state_changed(int sip_code, const QString& text) {
     if (sip_code == 200) {
-        ui->lblRegState->setText(QString("Reg Success (SIP%1 %2").arg(sip_code).arg(text));
+        ui->lblRegState->setText(QString("Reg Success (SIP%1 %2)").arg(sip_code).arg(text));
         ui->lblRegState->setStyleSheet("QLabel { color: green; }");
     } else {
-        ui->lblRegState->setText(QString("Reg Failed: SIP%1 %2").arg(sip_code).arg(text));
+        ui->lblRegState->setText(QString("Reg Failed: SIP%1 %2)").arg(sip_code).arg(text));
         ui->lblRegState->setStyleSheet("QLabel { color: red; }");
     }
+}
+
+void MainWindow::display_sip_message(const QString& message) {
+    ui->lblFlow->setText(message);
 }

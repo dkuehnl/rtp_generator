@@ -1,4 +1,5 @@
 #include "sipmachine.h"
+#include "mainwindow.h"
 
 #include <QString>
 #include <QMetaObject>
@@ -49,28 +50,46 @@ SipMachine::~SipMachine() {
     } catch (pj::Error& err) {
         qWarning() << "PJSIP cleanup error:" << err.info().c_str();
     }
+
+    if (m_logwriter) {
+        delete m_logwriter;
+        m_logwriter = nullptr;
+    }
 }
 
 bool SipMachine::init() {
     try {
         m_endpoint.libCreate();
         pj::EpConfig endpoint_config;
+        endpoint_config.logConfig.level = 5;
+        endpoint_config.logConfig.msgLogging = 1;
+
+        m_logwriter = new SipLogWriter(this);
+        endpoint_config.logConfig.writer = m_logwriter;
+
+        connect(m_logwriter, &SipLogWriter::new_sip_message, this, &SipMachine::new_sip_message, Qt::QueuedConnection);
+
+
         m_endpoint.libInit(endpoint_config);
 
         pj::TransportConfig transport_cfg;
         transport_cfg.port = 5060;
-        m_endpoint.transportCreate(PJSIP_TRANSPORT_UDP, transport_cfg);
+        m_endpoint.transportCreate(PJSIP_TRANSPORT_TCP, transport_cfg);
 
         m_endpoint.libStart();
         m_endpoint_inited = true;
         return true;
     } catch (pj::Error& err) {
         qWarning() << "PJSIP init error:" << err.info().c_str();
+        if (m_logwriter) {
+            delete m_logwriter;
+            m_logwriter = nullptr;
+        }
         return false;
     }
 }
 
-bool SipMachine::create_account(const QString& username, const QString& domain, const QString& password, bool register_on_add) {
+bool SipMachine::create_account(const QString& username, const QString& proxy_ip, const QString& password, QLabel* label) {
     if (!m_endpoint_inited && !init()) {
         return false;
     }
@@ -78,11 +97,19 @@ bool SipMachine::create_account(const QString& username, const QString& domain, 
     try {
         pj::AccountConfig acc_config;
         std::string user = username.toStdString();
-        std::string dom = domain.toStdString();
+        std::string proxy = proxy_ip.toStdString();
+        m_label = label;
 
-        acc_config.idUri = "sip:" + user + "@" + dom;
-        acc_config.regConfig.registrarUri = "sip:" + dom;
-        acc_config.regConfig.registerOnAdd = register_on_add ? PJ_TRUE : PJ_FALSE;
+        acc_config.idUri = "sip:" + user + "@tel.t-online.de";
+        acc_config.regConfig.registrarUri = "sip:" + proxy + ":5060;transport=tcp";
+        acc_config.sipConfig.proxies.clear();
+        acc_config.sipConfig.proxies.push_back("sip:" + proxy + ":5060;transport=tcp");
+
+        acc_config.natConfig.sipOutboundUse = 0;
+        acc_config.natConfig.contactRewriteUse = 0;
+        acc_config.natConfig.contactRewriteMethod = 0;
+
+        acc_config.regConfig.registerOnAdd = true;
 
         pj::AuthCredInfo credentials("digest", "*", user, 0, password.toStdString());
         acc_config.sipConfig.authCreds.push_back(credentials);
@@ -104,6 +131,9 @@ bool SipMachine::create_account(const QString& username, const QString& domain, 
 }
 
 void SipMachine::on_account_reg_state(int sip_code, const QString& text) {
-    qDebug() << "Registration state changed:" << sip_code << text;
     emit registration_state_changed(sip_code, text);
+}
+
+void SipMachine::on_new_sip_message(const QString& message) {
+    emit new_sip_message(message);
 }
