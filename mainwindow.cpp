@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     m_sip = new SipMachine(this);
+    m_chart_widget = ui->gvFlowChart;
 
     connect(ui->btnRegister, &QPushButton::clicked, this, &MainWindow::on_btnRegister_clicked);
     connect(m_sip, &SipMachine::registration_state_changed, this, &MainWindow::on_registration_state_changed);
@@ -23,7 +24,7 @@ void MainWindow::on_btnRegister_clicked() {
     QString proxy_ip = ui->leProxyIp->text();
     QString password = ui->lePassword->text();
 
-    m_sip->create_account(user, proxy_ip, password, ui->lblFlow);
+    m_sip->create_account(user, proxy_ip, password);
 }
 
 void MainWindow::on_registration_state_changed(int sip_code, const QString& text) {
@@ -37,5 +38,5 @@ void MainWindow::on_registration_state_changed(int sip_code, const QString& text
 }
 
 void MainWindow::display_sip_message(const QString& message) {
-    ui->lblFlow->setText(message);
+    m_chart_widget->add_message(message);
 }

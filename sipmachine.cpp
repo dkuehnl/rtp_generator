@@ -1,5 +1,4 @@
 #include "sipmachine.h"
-#include "mainwindow.h"
 
 #include <QString>
 #include <QMetaObject>
@@ -89,7 +88,7 @@ bool SipMachine::init() {
     }
 }
 
-bool SipMachine::create_account(const QString& username, const QString& proxy_ip, const QString& password, QLabel* label) {
+bool SipMachine::create_account(const QString& username, const QString& proxy_ip, const QString& password) {
     if (!m_endpoint_inited && !init()) {
         return false;
     }
@@ -98,7 +97,6 @@ bool SipMachine::create_account(const QString& username, const QString& proxy_ip
         pj::AccountConfig acc_config;
         std::string user = username.toStdString();
         std::string proxy = proxy_ip.toStdString();
-        m_label = label;
 
         acc_config.idUri = "sip:" + user + "@tel.t-online.de";
         acc_config.regConfig.registrarUri = "sip:" + proxy + ":5060;transport=tcp";

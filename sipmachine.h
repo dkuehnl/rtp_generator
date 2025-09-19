@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QString>
 #include <QMetaObject>
-#include <QLabel>
 #include <pjsua2.hpp>
 
 #include "siplogwriter.h"
@@ -20,8 +19,7 @@ public:
     bool create_account(
         const QString& username,
         const QString& proxy_ip,
-        const QString& password,
-        QLabel* label);
+        const QString& password);
 
 signals:
     void registration_state_changed(int sip_code, const QString& text);
@@ -36,7 +34,6 @@ private slots:
 private:
     pj::Endpoint m_endpoint;
     bool m_endpoint_inited = false;
-    QLabel* m_label;
     SipLogWriter* m_logwriter = nullptr;
 
     class MyAccount;

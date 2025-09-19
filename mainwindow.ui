@@ -117,17 +117,14 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="lblFlow">
+   <widget class="FlowChart" name="gvFlowChart">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>100</y>
-      <width>351</width>
-      <height>221</height>
+      <x>629</x>
+      <y>10</y>
+      <width>421</width>
+      <height>481</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
     </property>
    </widget>
   </widget>
@@ -143,6 +140,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FlowChart</class>
+   <extends>QGraphicsView</extends>
+   <header>flowchart.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

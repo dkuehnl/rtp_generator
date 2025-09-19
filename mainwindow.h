@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "sipmachine.h"
+#include "flowchart.h"
 
 #include <QMainWindow>
 
@@ -26,7 +27,9 @@ private slots:
 
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow* ui;
     SipMachine* m_sip;
+    FlowChart* m_chart_widget;
+
 };
 #endif // MAINWINDOW_H
