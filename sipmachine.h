@@ -7,6 +7,7 @@
 #include <pjsua2.hpp>
 
 #include "siplogwriter.h"
+#include "sipcall.h"
 
 class SipMachine : public QObject {
     Q_OBJECT
@@ -20,6 +21,8 @@ public:
         const QString& username,
         const QString& proxy_ip,
         const QString& password);
+
+    bool make_call(const QString& destination);
 
 signals:
     void registration_state_changed(int sip_code, const QString& text);
@@ -38,6 +41,8 @@ private:
 
     class MyAccount;
     MyAccount* m_account = nullptr;
+
+    SipCall* m_call = nullptr;
 };
 
 #endif // SIPMACHINE_H

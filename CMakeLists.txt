@@ -46,6 +46,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         sipmachine.h sipmachine.cpp
         siplogwriter.h siplogwriter.cpp
         flowchart.h flowchart.cpp
+        sipcall.h sipcall.cpp
 
     )
 # Define target properties for Android with Qt 6 as:

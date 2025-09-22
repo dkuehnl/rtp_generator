@@ -3,6 +3,7 @@
 #include <QString>
 #include <QMetaObject>
 #include <QDebug>
+#include <QCoreApplication>
 
 class SipMachine::MyAccount : public pj::Account {
 public:
@@ -62,6 +63,8 @@ bool SipMachine::init() {
         pj::EpConfig endpoint_config;
         endpoint_config.logConfig.level = 5;
         endpoint_config.logConfig.msgLogging = 1;
+        endpoint_config.uaConfig.natTypeInSdp = 0;
+        endpoint_config.uaConfig.userAgent = (QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion()).toStdString();
 
         m_logwriter = new SipLogWriter(this);
         endpoint_config.logConfig.writer = m_logwriter;
@@ -106,6 +109,7 @@ bool SipMachine::create_account(const QString& username, const QString& proxy_ip
         acc_config.natConfig.sipOutboundUse = 0;
         acc_config.natConfig.contactRewriteUse = 0;
         acc_config.natConfig.contactRewriteMethod = 0;
+        acc_config.natConfig.viaRewriteUse = 0;
 
         acc_config.regConfig.registerOnAdd = true;
 
@@ -127,6 +131,31 @@ bool SipMachine::create_account(const QString& username, const QString& proxy_ip
         return false;
     }
 }
+
+bool SipMachine::make_call(const QString& destination) {
+    if (!m_account) {
+        qWarning() << "No account available";
+        return false;
+    }
+
+    try {
+        pj::CallOpParam prm(false);
+        std::string uri = "sip:" + destination.toStdString();
+        qDebug() << uri;
+        if (m_call) {
+            delete m_call;
+            m_call = nullptr;
+        }
+
+        m_call = new SipCall(*m_account);
+        m_call->makeCall(uri, prm);
+        return true;
+    } catch (pj::Error &err) {
+        qWarning() << "Call creation error:" << err.info().c_str();
+        return false;
+    }
+}
+
 
 void SipMachine::on_account_reg_state(int sip_code, const QString& text) {
     emit registration_state_changed(sip_code, text);
