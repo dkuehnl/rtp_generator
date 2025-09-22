@@ -40,3 +40,11 @@ void MainWindow::on_registration_state_changed(int sip_code, const QString& text
 void MainWindow::display_sip_message(const QString& message) {
     m_chart_widget->add_message(message);
 }
+
+void MainWindow::on_btnCall_clicked() {
+    QString destination = ui->leDestination->text();
+    destination += "@tel.t-online.de";
+    if (!m_sip->make_call(destination)) {
+        qDebug() << "Failed to call";
+    }
+}
