@@ -103,19 +103,18 @@ bool SipMachine::create_account(const QString& username, const QString& proxy_ip
 
         acc_config.idUri = "sip:" + user + "@tel.t-online.de";
         acc_config.regConfig.registrarUri = "sip:" + proxy + ":5060;transport=tcp";
+        acc_config.regConfig.registerOnAdd = true;
+        acc_config.regConfig.timeoutSec = 550;
+
         acc_config.sipConfig.proxies.clear();
         acc_config.sipConfig.proxies.push_back("sip:" + proxy + ":5060;transport=tcp");
+        pj::AuthCredInfo credentials("digest", "*", user, 0, password.toStdString());
+        acc_config.sipConfig.authCreds.push_back(credentials);
 
         acc_config.natConfig.sipOutboundUse = 0;
         acc_config.natConfig.contactRewriteUse = 0;
         acc_config.natConfig.contactRewriteMethod = 0;
         acc_config.natConfig.viaRewriteUse = 0;
-
-        acc_config.regConfig.registerOnAdd = true;
-
-        pj::AuthCredInfo credentials("digest", "*", user, 0, password.toStdString());
-        acc_config.sipConfig.authCreds.push_back(credentials);
-        acc_config.regConfig.timeoutSec = 550;
 
         if (m_account) {
             m_account->setRegistration(false);
