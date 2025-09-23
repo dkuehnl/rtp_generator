@@ -12,19 +12,24 @@ MainWindow::MainWindow(QWidget *parent)
     m_sip = new SipMachine(this);
     m_chart_widget = ui->gvFlowChart;
 
-    connect(ui->btnRegister, &QPushButton::clicked, this, &MainWindow::on_btnRegister_clicked);
     connect(m_sip, &SipMachine::registration_state_changed, this, &MainWindow::on_registration_state_changed);
     connect(m_sip, &SipMachine::new_sip_message, this, &MainWindow::display_sip_message, Qt::QueuedConnection);
+    connect(ui->rbAdvCallflow, &QRadioButton::toggled, this, &MainWindow::activate_advanced_call_setup);
+    connect(ui->rbAdvRtpFlow, &QRadioButton::toggled, this, &MainWindow::activate_advanced_rtp_setup);
+    connect(ui->rbCustCodecs, &QRadioButton::toggled, this, &MainWindow::activate_cust_codecs);
+    connect(ui->rbInvokeGatekeeper, &QRadioButton::toggled, this, &MainWindow::activate_gatekeeper);
 
-    ui->rbCallflow->isChecked();
     //Disable Advanced-Options:
     MainWindow::activate_advanced_call_setup(false);
+    MainWindow::activate_cust_codecs(false);
+    MainWindow::activate_gatekeeper(false);
     MainWindow::activate_advanced_rtp_setup(false);
 
 
     QButtonGroup* group_call_setup = new QButtonGroup(this);
     group_call_setup->addButton(ui->rbCallflow);
     group_call_setup->addButton(ui->rbAdvCallflow);
+    ui->rbCallflow->setChecked(true);
 
     QButtonGroup* group_rtp_setup = new QButtonGroup(this);
     group_rtp_setup->addButton(ui->rbRtpFlow);
@@ -71,26 +76,6 @@ void MainWindow::on_btnCall_clicked() {
     }
 }
 
-void MainWindow::on_rbCallflow_toggled(bool checked) {
-    MainWindow::activate_advanced_call_setup(!checked);
-}
-
-void MainWindow::activate_advanced_call_setup(bool active) {
-    ui->rbCustCodecs->setEnabled(active);
-    ui->rbInvokeGatekeeper->setEnabled(active);
-
-    ui->cbAllUpdate->setEnabled(active);
-    ui->cbG722->setEnabled(active);
-    ui->cbPCMA->setEnabled(active);
-    ui->cbPCMU->setEnabled(active);
-    ui->cbSupp100rel->setEnabled(active);
-    ui->cbSuppTimer->setEnabled(active);
-    ui->cbTelCust->setEnabled(active);
-    ui->cbTelDyn->setEnabled(active);
-
-    ui->leTelDyn->setEnabled(active);
-}
-
 void MainWindow::activate_advanced_rtp_setup(bool active) {
     ui->rbStopRTPcomplete->setEnabled(active);
     ui->rbStopRTPfor->setEnabled(active);
@@ -119,4 +104,25 @@ void MainWindow::activate_advanced_rtp_setup(bool active) {
     ui->combChangeSequence->setEnabled(active);
 
     ui->lblSequenceGap->setEnabled(active);
+}
+
+void MainWindow::activate_advanced_call_setup(bool active) {
+    ui->rbCustCodecs->setEnabled(active);
+    ui->rbInvokeGatekeeper->setEnabled(active);
+}
+
+void MainWindow::activate_cust_codecs(bool active) {
+    ui->cbG722->setEnabled(active);
+    ui->cbPCMA->setEnabled(active);
+    ui->cbPCMU->setEnabled(active);
+    ui->cbTelCust->setEnabled(active);
+
+    ui->cbTelDyn->setEnabled(active);
+    ui->leTelDyn->setEnabled(active);
+}
+
+void MainWindow::activate_gatekeeper(bool active) {
+    ui->cbAllUpdate->setEnabled(active);
+    ui->cbSupp100rel->setEnabled(active);
+    ui->cbSuppTimer->setEnabled(active);
 }

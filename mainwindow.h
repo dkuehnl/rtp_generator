@@ -22,7 +22,6 @@ public:
 
 private slots:
     void on_btnRegister_clicked();
-    void on_rbCallflow_toggled(bool checked);
     void on_registration_state_changed(int sip_code, const QString& text);
     void display_sip_message(const QString& message);
     void on_btnCall_clicked();
@@ -31,6 +30,8 @@ private slots:
 private:
     void activate_advanced_call_setup(bool active);
     void activate_advanced_rtp_setup(bool active);
+    void activate_cust_codecs(bool active);
+    void activate_gatekeeper(bool active);
 
     Ui::MainWindow* ui;
     SipMachine* m_sip;
