@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include <QButtonGroup>
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -12,10 +15,29 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnRegister, &QPushButton::clicked, this, &MainWindow::on_btnRegister_clicked);
     connect(m_sip, &SipMachine::registration_state_changed, this, &MainWindow::on_registration_state_changed);
     connect(m_sip, &SipMachine::new_sip_message, this, &MainWindow::display_sip_message, Qt::QueuedConnection);
+
+    ui->rbCallflow->isChecked();
+    //Disable Advanced-Options:
+    MainWindow::activate_advanced_call_setup(false);
+    MainWindow::activate_advanced_rtp_setup(false);
+
+
+    QButtonGroup* group_call_setup = new QButtonGroup(this);
+    group_call_setup->addButton(ui->rbCallflow);
+    group_call_setup->addButton(ui->rbAdvCallflow);
+
+    QButtonGroup* group_rtp_setup = new QButtonGroup(this);
+    group_rtp_setup->addButton(ui->rbRtpFlow);
+    group_rtp_setup->addButton(ui->rbAdvRtpFlow);
+
+    QButtonGroup* group_rtp_stop = new QButtonGroup(this);
+    group_rtp_stop->addButton(ui->rbStopRTPfor);
+    group_rtp_stop->addButton(ui->rbStopRTPcomplete);
+
+
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
@@ -47,4 +69,54 @@ void MainWindow::on_btnCall_clicked() {
     if (!m_sip->make_call(destination)) {
         qDebug() << "Failed to call";
     }
+}
+
+void MainWindow::on_rbCallflow_toggled(bool checked) {
+    MainWindow::activate_advanced_call_setup(!checked);
+}
+
+void MainWindow::activate_advanced_call_setup(bool active) {
+    ui->rbCustCodecs->setEnabled(active);
+    ui->rbInvokeGatekeeper->setEnabled(active);
+
+    ui->cbAllUpdate->setEnabled(active);
+    ui->cbG722->setEnabled(active);
+    ui->cbPCMA->setEnabled(active);
+    ui->cbPCMU->setEnabled(active);
+    ui->cbSupp100rel->setEnabled(active);
+    ui->cbSuppTimer->setEnabled(active);
+    ui->cbTelCust->setEnabled(active);
+    ui->cbTelDyn->setEnabled(active);
+
+    ui->leTelDyn->setEnabled(active);
+}
+
+void MainWindow::activate_advanced_rtp_setup(bool active) {
+    ui->rbStopRTPcomplete->setEnabled(active);
+    ui->rbStopRTPfor->setEnabled(active);
+
+    ui->cbStopRTP->setEnabled(active);
+    ui->cbStopRTPafter->setEnabled(active);
+    ui->cbChangeSSRC->setEnabled(active);
+    ui->cbChangeSSRCSequence->setEnabled(active);
+    ui->cbChangeSequenceSSRC->setEnabled(active);
+    ui->cbChangeSequence->setEnabled(active);
+    ui->cbSetStartSSRC->setEnabled(active);
+    ui->cbStartSequence->setEnabled(active);
+    ui->cbSetSequenceGap->setEnabled(active);
+
+    ui->leChangeSequence->setEnabled(active);
+    ui->leChangeSSRC->setEnabled(active);
+    ui->leSetSequenceGap->setEnabled(active);
+    ui->leSetStartSSRC->setEnabled(active);
+    ui->leStopRTPafter->setEnabled(active);
+    ui->leStopRTPfor->setEnabled(active);
+    ui->leStartSequence->setEnabled(active);
+
+    ui->combStopRTPfor->setEnabled(active);
+    ui->combStopRTPafter->setEnabled(active);
+    ui->combChangeSSRC->setEnabled(active);
+    ui->combChangeSequence->setEnabled(active);
+
+    ui->lblSequenceGap->setEnabled(active);
 }
