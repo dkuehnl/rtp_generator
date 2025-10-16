@@ -12,8 +12,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network)
 
 #PJSIP-Configuration:
 set(PJSIP_DIR "C:/Users/dkueh/Workspace/cpp/third_party_libs/pjproject-2.15.1")
@@ -69,6 +69,7 @@ endif()
 
 target_link_libraries(RTP-Generator
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+  PRIVATE Qt${QT_VERSION_MAJOR}::Network
   ${PJSIP_DIR}/lib/libpjproject-x86_64-x64-vc14-Debug-Dynamic.lib
   ws2_32
   ole32

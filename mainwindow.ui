@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1128</width>
-    <height>840</height>
+    <width>1132</width>
+    <height>809</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -19,212 +25,855 @@
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>1051</width>
-      <height>746</height>
+      <width>1091</width>
+      <height>701</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="centralLayout">
-     <item row="0" column="0">
-      <layout class="QGridLayout" name="callSetupLayout">
-       <item row="8" column="1">
-        <widget class="QCheckBox" name="cbTelCust">
-         <property name="text">
-          <string>tel-event (cust)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QCheckBox" name="cbSupp100rel">
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>Supported 100rel</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QLineEdit" name="leTelDyn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Policy::Minimum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>10</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="1">
-        <widget class="QRadioButton" name="rbCustCodecs">
-         <property name="text">
-          <string>Customize Codecs</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QCheckBox" name="cbTelDyn">
-         <property name="text">
-          <string>tel-event (dyn)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QCheckBox" name="cbG722">
-         <property name="text">
-          <string>G722 (9)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QCheckBox" name="cbPCMU">
-         <property name="text">
-          <string>PCMU (0)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QRadioButton" name="rbAdvCallflow">
-         <property name="text">
-          <string>Advanced Callflow</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QRadioButton" name="rbInvokeGatekeeper">
-         <property name="text">
-          <string>Invoke Gatekeeper</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QCheckBox" name="cbAllUpdate">
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>Allow UPDATE</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QCheckBox" name="cbPCMA">
-         <property name="text">
-          <string>PCMA (8)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QCheckBox" name="cbSuppTimer">
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>Supported timer</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QLabel" name="lblCallSetup">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Call Setup (Outgoing Call)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QRadioButton" name="rbCallflow">
-         <property name="text">
-          <string>Standard Callflow</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="1" column="0">
-      <widget class="Line" name="line">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>20</height>
-        </size>
+     <item row="0" column="0" rowspan="2">
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>2</number>
        </property>
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
+       <widget class="QWidget" name="tbRegister">
+        <attribute name="title">
+         <string>Register Setup</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>522</width>
+           <height>101</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="registerSetupLayout">
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="lblRegisterSetup">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Register Setup</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="rbSipInstance">
+            <property name="text">
+             <string>Activate sip-instance</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="rbRegister">
+            <property name="text">
+             <string>Standard Register</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QRadioButton" name="rbAdvRegister">
+            <property name="text">
+             <string>Advanced Register</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tbCall">
+        <attribute name="title">
+         <string>Call Setup</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>522</width>
+           <height>259</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="callSetupLayout">
+          <item row="9" column="1">
+           <widget class="QLineEdit" name="leTelDyn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QRadioButton" name="rbCustCodecs">
+            <property name="text">
+             <string>Customize Codecs</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="rbCallflow">
+            <property name="text">
+             <string>Standard Callflow</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="lblCallSetup">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Call Setup (Outgoing Call)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="cbReq100rel">
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Require 100rel</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QCheckBox" name="cbSuppTimer">
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Supported timer</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="rbInvokeGatekeeper">
+            <property name="text">
+             <string>Invoke Gatekeeper</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="cbSupp100rel">
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Supported 100rel</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="cbPCMU">
+            <property name="text">
+             <string>PCMU (0)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="cbG722">
+            <property name="text">
+             <string>G722 (9)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QCheckBox" name="cbTelCust">
+            <property name="text">
+             <string>tel-event (cust)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QCheckBox" name="cbReqTimer">
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Require timer</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QRadioButton" name="rbAdvCallflow">
+            <property name="text">
+             <string>Advanced Callflow</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="cbPCMA">
+            <property name="text">
+             <string>PCMA (8)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="cbAllUpdate">
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Disable UPDATE</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QCheckBox" name="cbTelDyn">
+            <property name="text">
+             <string>tel-event (dyn)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="lblRefresher">
+              <property name="text">
+               <string>Refresher=</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="combRefresher">
+              <item>
+               <property name="text">
+                <string>uas</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>uac</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>260</y>
+           <width>522</width>
+           <height>257</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="callIncSetupLayout">
+          <item row="8" column="1">
+           <widget class="QCheckBox" name="cbTelCust_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>tel-event (cust)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="cbSupp100rel_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Supported 100rel</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLineEdit" name="leTelDyn_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="1">
+           <widget class="QRadioButton" name="rbCustCodecs_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Customize Codecs</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QCheckBox" name="cbTelDyn_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>tel-event (dyn)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="cbG722_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>G722 (9)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="cbPCMU_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>PCMU (0)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QRadioButton" name="rbAdvCallflow_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Advanced Callflow</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="rbInvokeGatekeeper_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Invoke Gatekeeper</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="cbAllUpdate_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Disable UPDATE</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="cbPCMA_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>PCMA (8)</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="cbSuppTimer_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Supported timer</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="lblCallSetup_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Call Setup (Incoming Call) - not implemented yet! - </string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="rbCallflow_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Standard Callflow</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tbRTP">
+        <attribute name="title">
+         <string>RTP Setup</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>591</width>
+           <height>367</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="rtpSetupLayout">
+          <item row="13" column="0">
+           <widget class="QRadioButton" name="rbStopRTPfor">
+            <property name="text">
+             <string>Stop for</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLineEdit" name="leChangeSSRC">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="0">
+           <widget class="QCheckBox" name="cbStopRTPafter">
+            <property name="text">
+             <string>Stop after</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QCheckBox" name="cbChangeSSRC">
+            <property name="text">
+             <string>Change SSRC after</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="0">
+           <widget class="QRadioButton" name="rbStopRTPcomplete">
+            <property name="text">
+             <string>complete RTP-stop</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="lblSequenceGap">
+            <property name="text">
+             <string>pakets</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QComboBox" name="combChangeSequence">
+            <item>
+             <property name="text">
+              <string>seconds</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>pakets</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QRadioButton" name="rbAdvRtpFlow">
+            <property name="text">
+             <string>Advanced RTP-Flow</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="cbStartSequence">
+            <property name="text">
+             <string>Set start Sequence-Nr</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QLineEdit" name="leSetStartSSRC">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="2">
+           <widget class="QComboBox" name="combStopRTPafter">
+            <item>
+             <property name="text">
+              <string>seconds</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>pakets</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="9" column="2">
+           <widget class="QComboBox" name="combChangeSSRC">
+            <item>
+             <property name="text">
+              <string>seconds</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>pakets</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="leChangeSequence">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="3">
+           <widget class="QLabel" name="lblRtpSetup">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>RTP Setup</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="rbRtpFlow">
+            <property name="text">
+             <string>Standard RTP-Flow</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QCheckBox" name="cbSetStartSSRC">
+            <property name="text">
+             <string>Set start SSRC</string>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="1">
+           <widget class="QLineEdit" name="leStopRTPfor">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="1">
+           <widget class="QLineEdit" name="leStopRTPafter">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0" colspan="2">
+           <widget class="QCheckBox" name="cbStopRTP">
+            <property name="text">
+             <string>Stop RTP-stream during call</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <widget class="QCheckBox" name="cbChangeSSRCSequence">
+            <property name="text">
+             <string>Change also Sequence (random start)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="2">
+           <widget class="QComboBox" name="combStopRTPfor">
+            <item>
+             <property name="text">
+              <string>seconds</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>pakets</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="cbChangeSequenceSSRC">
+            <property name="text">
+             <string>Change also SSRC</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="cbChangeSequence">
+            <property name="text">
+             <string>Change Sequence after</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="leStartSequence">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="leSetSequenceGap">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="cbSetSequenceGap">
+            <property name="text">
+             <string>Set Sequence-gap</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
       </widget>
      </item>
-     <item row="0" column="1" rowspan="3">
+     <item row="0" column="1" rowspan="2">
       <widget class="FlowChart" name="gvFlowChart">
        <property name="enabled">
         <bool>true</bool>
@@ -237,8 +886,8 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>300</width>
-         <height>0</height>
+         <width>400</width>
+         <height>550</height>
         </size>
        </property>
        <property name="autoFillBackground">
@@ -255,7 +904,61 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0" colspan="2">
+     <item row="3" column="0" colspan="2">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Destination-Number: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="leDestination"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnCall">
+         <property name="text">
+          <string>Start Call</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEndCall">
+         <property name="text">
+          <string>Hung up</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="0" colspan="2">
       <layout class="QGridLayout" name="RegLayout">
        <item row="1" column="2">
         <widget class="QLineEdit" name="leProxyIp">
@@ -377,299 +1080,64 @@
        </item>
       </layout>
      </item>
-     <item row="2" column="0">
-      <layout class="QGridLayout" name="rtpSetupLayout">
-       <item row="13" column="0">
-        <widget class="QRadioButton" name="rbStopRTPfor">
-         <property name="text">
-          <string>Stop for</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QLineEdit" name="leChangeSSRC">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="0">
-        <widget class="QCheckBox" name="cbStopRTPafter">
-         <property name="text">
-          <string>Stop after</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
-        <widget class="QCheckBox" name="cbChangeSSRC">
-         <property name="text">
-          <string>Change SSRC after</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="0">
-        <widget class="QRadioButton" name="rbStopRTPcomplete">
-         <property name="text">
-          <string>complete RTP-stop</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QLabel" name="lblSequenceGap">
-         <property name="text">
-          <string>pakets</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QComboBox" name="combChangeSequence">
-         <item>
-          <property name="text">
-           <string>seconds</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>pakets</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="2">
-        <widget class="QRadioButton" name="rbAdvRtpFlow">
-         <property name="text">
-          <string>Advanced RTP-Flow</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="cbStartSequence">
-         <property name="text">
-          <string>Set start Sequence-Nr</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QLineEdit" name="leSetStartSSRC">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="2">
-        <widget class="QComboBox" name="combStopRTPafter">
-         <item>
-          <property name="text">
-           <string>seconds</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>pakets</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="9" column="2">
-        <widget class="QComboBox" name="combChangeSSRC">
-         <item>
-          <property name="text">
-           <string>seconds</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>pakets</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="leChangeSequence">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="3">
-        <widget class="QLabel" name="lblRtpSetup">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>RTP Setup</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QRadioButton" name="rbRtpFlow">
-         <property name="text">
-          <string>Standard RTP-Flow</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QCheckBox" name="cbSetStartSSRC">
-         <property name="text">
-          <string>Set start SSRC</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="1">
-        <widget class="QLineEdit" name="leStopRTPfor">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <widget class="QLineEdit" name="leStopRTPafter">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0" colspan="2">
-        <widget class="QCheckBox" name="cbStopRTP">
-         <property name="text">
-          <string>Stop RTP-stream during call</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QCheckBox" name="cbChangeSSRCSequence">
-         <property name="text">
-          <string>Change also Sequence (random start)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="2">
-        <widget class="QComboBox" name="combStopRTPfor">
-         <item>
-          <property name="text">
-           <string>seconds</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>pakets</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QCheckBox" name="cbChangeSequenceSSRC">
-         <property name="text">
-          <string>Change also SSRC</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="cbChangeSequence">
-         <property name="text">
-          <string>Change Sequence after</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="leStartSequence">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QLineEdit" name="leSetSequenceGap">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QCheckBox" name="cbSetSequenceGap">
-         <property name="text">
-          <string>Set Sequence-gap</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="3" column="0" colspan="2">
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+     <item row="2" column="0" colspan="2">
+      <widget class="Line" name="line">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>50</verstretch>
+        </sizepolicy>
        </property>
-       <property name="sizeHint" stdset="0">
+       <property name="minimumSize">
         <size>
-         <width>20</width>
-         <height>40</height>
+         <width>0</width>
+         <height>20</height>
         </size>
        </property>
-      </spacer>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>10</height>
+        </size>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="Line" name="line_2">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QPushButton" name="btnRtpPaket">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>370</x>
       <y>10</y>
-      <width>371</width>
-      <height>31</height>
+      <width>80</width>
+      <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLineEdit" name="leDestination"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnCall">
-       <property name="text">
-        <string>Start Call</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnEndCall">
-       <property name="text">
-        <string>Hung up</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>RTP-Paket</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -677,7 +1145,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1128</width>
+     <width>1132</width>
      <height>21</height>
     </rect>
    </property>
